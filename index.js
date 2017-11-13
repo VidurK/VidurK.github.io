@@ -8,7 +8,6 @@ import PageNotFound from './components/PageNotFound';
 import ExampleComponent from './components/ExampleComponent';
 import ExampleTwoDeepComponent from './components/ExampleTwoDeepComponent';
 
-
 ///////////////////////////////////////////////////////////////////////////////
 // React for GitHub Pages - https://github.com/rafrex/react-github-pages
 // ----------------------------------------------------------------------------

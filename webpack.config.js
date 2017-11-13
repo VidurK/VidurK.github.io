@@ -2,10 +2,13 @@ const webpack = require('webpack');
 
 module.exports = {
   context: __dirname,
-  entry: './index.js',
+  entry: {
+      bundle: './index.js',
+      app: './client/index.js'
+  },
   output: {
     path: __dirname + '/__build__',
-    filename: 'bundle.js',
+    filename: '[name].entry.js',
   },
   module: {
     loaders: [
@@ -16,6 +19,10 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
+      },
+      {
+         test: /\.html$/,
+         loader: "raw-loader"
       }
     ]
   },
