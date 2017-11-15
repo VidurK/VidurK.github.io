@@ -7,7 +7,8 @@ class WorldMap extends Component {
     super()
     this.state = {
       provinces: [],
-      cities: [
+      events: [
+        { name: "Test", coordinates: [-53.6532, 70.3832], population: 37843000 }
       ],
     }
     console.log(geoMercator);
@@ -23,10 +24,13 @@ class WorldMap extends Component {
       .translate([w/2, h/2])
   }
   handleProvinceClick(provIndex) {
-    console.log("Clicked on country: ", this.state.provinces[provIndex]);
+    console.log("Clicked on country2: ", this.state.provinces[provIndex]);
   }
   handleMarkerClick(i) {
-    console.log("Marker: ", this.state.cities[i]);
+    console.log("Marker: ", this.state.events[i]);
+    $('html, body').animate({
+      scrollTop: $("#first_nations").offset().top
+    }, 1000, "easeInOutExpo");
   }
   componentDidMount() {
     fetch("/public/canada.json")
@@ -63,7 +67,7 @@ class WorldMap extends Component {
         </g>
         <g className="markers">
           {
-            this.state.cities.map((city, i) => (
+            this.state.events.map((city, i) => (
               <circle
                 key={ `marker-${i}` }
                 cx={ this.projection()(city.coordinates)[0] }
