@@ -171,7 +171,6 @@ hr.small {
   padding: 50px 0;
 }
 
-
 /* Services */
 
 .services {
@@ -227,6 +226,59 @@ hr.small {
 
 .map iframe {
   pointer-events: none;
+}
+
+/* Carousel */
+
+.japanese-carousel {
+    width: 100%;
+    height: 50%;
+    display: inline-block;
+}
+
+/* PDF Navigation */
+.customViewer {
+  border-color: #fa5b35;
+  border-width: 1px;
+  border-style: solid;
+}
+.customViewer > canvas {
+  width: 100%;
+}
+.customPrevBtn {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  width: 48px;
+  color: #fa5b35;
+  background-color: #f3f3f3;
+  border-color: #fa5b35;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 6px;
+}
+.customNextBtn {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  width: 48px;
+  color: #fa5b35;
+  background-color: #f3f3f3;
+  border-color: #333333;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 6px;
+}
+.customPages {
+  display: inline-block;
+  width: calc(100% - 2 * 50px);
+}
+.customWrapper {
+  height: 40px;
+  font-size: 24px;
+  padding: 12px;
+  padding-bottom: 0;
+  background-color: #fff;
 }
 
 
