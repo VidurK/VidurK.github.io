@@ -9,8 +9,15 @@ class WorldMap extends Component {
     this.state = {
       provinces: [],
       events: [
-        { name: "Test", coordinates: [-75.6972, 45.4215], anchor:"#first_nations", tooltip:"This dot refers to the Indian act as discussed above." },
-        { name: "Test", coordinates: [-123.120, 49.2827], tooltip:"EXTERNAL LINK: Racism that occured in Vancouver British Columbia."}
+        { name: "Nova Scotia", coordinates: [-63.7443, 44.6820], anchor:"#black", tooltip:"Racism within the provincial school system"},
+        { name: "Winnipeg, Manitoba", coordinates: [-97.131067, 49.890646], link:"https://humanrights.ca/explore", tooltip:"Canadian Museum for Human Rights"},
+        { name: "Quebec City, Quebec", coordinates: [-71.286072, 46.782997], link:"https://en.wikipedia.org/wiki/Quebec_City_mosque_shooting", tooltip:"Quebec City Mosque Shooting resulting in 6 deaths"},
+        { name: "Vancouver, British Columbia", coordinates: [-123.1207, 49.2827], link:"https://en.wikipedia.org/wiki/Komagata_Maru_incident", tooltip:"The Komagata Maru incident involved a group of citizens of the British Raj who attempted to emigrate to Canada in 1914 but were denied entry"},
+        { name: "Nanaimo, British Columbia", coordinates: [-123.9401, 49.1659], anchor:"#japanese", tooltip:"One of the many Japanese Internment camps was located here"},
+        { name: "Markham, Ontario", coordinates: [-79.3370, 44.0561], link:"https://globalnews.ca/news/3530643/dash-cam-racist-verbal-attack/", tooltip:"Dash cam video captures racist verbal attack on Asian senior"},
+        { name: "Thunder Bay, Ontario", coordinates: [-89.2477, 48.3809], link:"http://www.cbc.ca/news/indigenous/police-racial-bias-aboriginal-canada-1.3761884", tooltip:"Racial bias in Canadian Policing against Indigenous people"},
+        { name: "Toronto, Ontario", coordinates: [-79.3832, 43.6532], link:"https://globalnews.ca/news/3503234/toronto-foody-mart-racist-verbal-abuse/", tooltip:"Another verbal assault video against an Asian Man"}
+
       ],
     }
     this.handleProvinceClick = this.handleProvinceClick.bind(this)
@@ -39,7 +46,7 @@ class WorldMap extends Component {
     if (this.state.events[i].anchor) {
         this.goToAnchor(this.state.events[i].anchor);
     } else {
-      var win = window.open('http://stackoverflow.com/', '_blank');
+      var win = window.open(this.state.events[i].link, '_blank');
       if (win) {
         //Browser has allowed it to be opened
         win.focus();
@@ -57,7 +64,6 @@ class WorldMap extends Component {
           return
         }
         response.json().then(provinces => {
-          console.log(provinces);
           this.setState({
             provinces: provinces.features,
           })
@@ -87,7 +93,7 @@ class WorldMap extends Component {
           {
             this.state.events.map((city, i) => (
               <circle
-                data-tip={city.tooltip}
+                data-tip={city.tooltip + " in " + city.name + "."}
                 key={ `marker-${i}` }
                 cx={ this.projection()(city.coordinates)[0] }
                 cy={ this.projection()(city.coordinates)[1] }
